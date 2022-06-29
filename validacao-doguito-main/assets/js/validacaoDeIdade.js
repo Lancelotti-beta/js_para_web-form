@@ -2,15 +2,24 @@ export function validacao(input) {
     const dataTipoDoInput = input.dataset.tipo;
 
     if(validadores[dataTipoDoInput]){
-        validadores[dataTipoDoInput](input)
+        validadores[dataTipoDoInput](input);
     }
 
     if(input.validity.valid){
         input.parentElement.classList.remove('input-container--invalido');
+        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = '';
     } else {
         input.parentElement.classList.add('input-container--invalido');
+        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = mostraMensagemDeErro(dataTipoDoInput, input);
     }
 }
+
+const vadidaErro = [
+    'valueMissing',
+    'typeMismatch',
+    'patternMismatch',
+    'CustomError'
+];
 
 const mensagemDeErro = {
     nome: {
@@ -28,6 +37,18 @@ const mensagemDeErro = {
         valueMissing: `O campo data de aniversário não pode estar vazio.`,
         CustomError: `Para efetuar o Cadastro você precisa ser maior de 18 anos`
     }
+};
+
+function mostraMensagemDeErro(tipoInput, input) {
+    let mensagem = '';
+
+    vadidaErro.forEach( error => {
+        if(input.validity[error]){
+            mensagem = mensagemDeErro[tipoInput][error];
+        }
+    });
+
+    return mensagem;
 }
 
 const validadores = {
