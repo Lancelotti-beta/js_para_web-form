@@ -40,6 +40,10 @@ const mensagemDeErro = {
     cpf: {
         valueMissing: `O campo de CPF não pode estar vazio.`,
         CustomError: `O CPF digitado não é Válido!`
+    },
+    cep: {
+        valueMissing: `O campo de CEP não pode estar vazio.`,
+        patternMismatch: `O CEP digitado não é válido!`
     }
 };
 
@@ -85,12 +89,12 @@ function maiorDe18(data) {
 function validandoCPF(input) {
     const cpfFromatado = input.value.replace(/\D/g, ''); 
     let mensagem = '';
+    
+    if(!verificaRepeticaoDeCPF(cpfFromatado) || !checaEstruturaDoCPF(cpfFromatado)) {
+        mensagem = 'O CPF digitado não é Válido!';
+    }
 
     input.setCustomValidity(mensagem);
-
-    if(!verificaRepeticaoDeCPF(cpfFromatado)) {
-        mensagem = 'O CPF digitado não é Válido!'
-    }
 }
 
 function verificaRepeticaoDeCPF(cpf) {
@@ -113,7 +117,7 @@ function verificaRepeticaoDeCPF(cpf) {
         if(valor == cpf){
             cpfValido = false;
         }
-    })
+    });
 
     return cpfValido;
 }
@@ -124,7 +128,28 @@ function checaEstruturaDoCPF(cpf) {
     return checarDigitoVerificador(cpf, multiplicador);
 }
 
-//function 
+function checarDigitoVerificador(cpf, multiplicador) {
+    if(multiplicador >= 12) {
+        return true;
+    }
+
+    let multiplicadorInicial = multiplicador;
+    let soma = 0;
+
+    const cpfSemDigito = cpf.substr(0, multiplicador - 1).split('');
+    const digitoVerificado = cpf.charAt(multiplicador - 1);
+
+    for(let cont = 0; multiplicadorInicial > 1; multiplicadorInicial--) {
+        soma = soma + cpfSemDigito[cont] * multiplicadorInicial;
+        cont++;
+    }
+
+    if(digitoVerificado == confirmaDigito(soma)) {
+        return checarDigitoVerificador(cpf, multiplicador + 1);
+    }
+
+    return false;
+}
 
 function confirmaDigito(soma) {
     return 11 - (soma % 11);
