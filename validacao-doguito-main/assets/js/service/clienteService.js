@@ -33,7 +33,7 @@ const listaDeClientes = () => {
         
         http.send()
     })
-    console.log(promise)
+    
     return promise
 }
 
