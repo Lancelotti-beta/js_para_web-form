@@ -1,4 +1,4 @@
-import { validacao } from "./validacaoDeIdade.js";
+import { validacao } from "./validacaoFormulario.js";
 
 const inputs = document.querySelectorAll('input');
 
