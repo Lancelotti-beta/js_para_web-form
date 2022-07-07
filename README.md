@@ -22,5 +22,32 @@ Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvend
  ### Js Assíncrono 
  - Fazer requisições utilizando `XMLHttpRequest()` | Buscar clientes em um servidor
  - Utilizar template `literals` para criar um template html
- - Lidar com `promises`.
+ - Lidar com `promises` & Refatorar o código para diminuir a complexidade com `fetch`
+
+ | `promises` |
+ | --- |  
+```
+    const promise = new Promise((resolve, reject) => {     
+        const http = new XMLHttpRequest()                 
+        http.open('GET', 'http://localhost:3000/profile')
+        http.onload = () => {                            
+            if (http.status >= 400) {                     
+                reject(JSON.parse(http.response))           
+            } else {                                     
+                resolve(JSON.parse(http.response))        
+            }                                            
+        }                                                
+        http.send()                                      
+    })                                                   
+    return promise                                       
+```
+ | `fetch` |
+ | --- |
+
+```
+    return fetch('http://localhost:3000/profile')
+    .then( resposta => {
+        return resposta.json()
+    })
+```
 
