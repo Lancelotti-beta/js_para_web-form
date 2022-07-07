@@ -29,7 +29,7 @@ Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvend
 ```
     const promise = new Promise((resolve, reject) => {     
         const http = new XMLHttpRequest()                 
-        http.open('GET', 'http://localhost:3000/profile')
+        http.open('GET', 'Url::/localhost/profile')
         http.onload = () => {                            
             if (http.status >= 400) {                     
                 reject(JSON.parse(http.response))           
@@ -45,7 +45,7 @@ Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvend
  | --- |
 
 ```
-    return fetch('http://localhost:3000/profile')
+    return fetch('Url::/localhost/profile')
     .then( resposta => {
         return resposta.json()
     })
