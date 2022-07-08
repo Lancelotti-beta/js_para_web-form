@@ -2,6 +2,16 @@
 
 Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvendo uma validação de Cadastro para a empresa ficticia Doguinho PetShop
 
+#### Iniciando o projeto no windows
+ ---------
+ Para iniciar projeto tenha o `node.js` e instale o `browser-sync`
+
+ inicie o Json sever com o comando: 
+ > npx json-server --watch db.json
+
+ em seguida inicie o Browser Sync:
+ > browser-sync start --server --file . --host --port 5000 --startPath telas/lista_cliente.html 
+
 ## Validação de fomulario - Parte I
 
  ### No HTML
