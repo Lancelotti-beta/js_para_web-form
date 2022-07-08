@@ -9,6 +9,16 @@
       "nome": "bruno",
       "email": "brunojosemarques.pe@gmail.com",
       "id": 2
+    },
+    {
+      "nome": "Yasmin De Freitas Macedo",
+      "email": "Ya.mim@email.com",
+      "id": 3
+    },
+    {
+      "nome": "Tobias",
+      "email": "tobi@gmail.com.br",
+      "id": 4
     }
   ]
 }
