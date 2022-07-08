@@ -1,6 +1,6 @@
 import { serviceCliente } from "../service/clienteService.js"
 
-const adionaClienteNaLista = (nome, email) => {
+const adionaClienteNaLista = (nome, email, id) => {
     const elementoTr = document.createElement('tr')
     const elementoCliente = `
         <td class="td" data-td>${nome}</td>
@@ -13,16 +13,29 @@ const adionaClienteNaLista = (nome, email) => {
         </td>
     `
     elementoTr.innerHTML = elementoCliente
+    elementoTr.dataset.id = id
 
     return elementoTr
 }
 
+
 const corpoDaTabela = document.querySelector('[data-tabela]')
+corpoDaTabela.addEventListener('click' , e => {
+    const botaoDeletar = e.target.className === 'botao-simples botao-simples--excluir'
+    if(botaoDeletar){
+        const cliente = e.target.closest('[data-id]')
+        const id = cliente.dataset.id
+        serviceCliente.deletaCliente(id)
+        .then(() => {
+            cliente.remove()
+        })
+    }
+})
 
 serviceCliente.listaDeClientes()
 .then( resposta => {
     resposta.forEach(elemento => {
-        corpoDaTabela.appendChild(adionaClienteNaLista(elemento.nome, elemento.email))
+        corpoDaTabela.appendChild(adionaClienteNaLista(elemento.nome, elemento.email, elemento.id))
     })
 })
 
