@@ -60,4 +60,8 @@ Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvend
         return resposta.json()
     })
 ```
+### Usando CRUD 
+  - Criando um cliente novo, listando clientes na aplicação, editar os dados e excluir quando necessário.
 
+Acrônimo `CRUD`: Create, update, Read e Delete. 
+"Traduzindo, é listar, criar, editar e excluir."
