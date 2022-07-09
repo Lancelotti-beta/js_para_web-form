@@ -20,22 +20,32 @@ const adionaClienteNaLista = (nome, email, id) => {
 
 
 const corpoDaTabela = document.querySelector('[data-tabela]')
-corpoDaTabela.addEventListener('click' , e => {
+corpoDaTabela.addEventListener('click' , async e => {
     const botaoDeletar = e.target.className === 'botao-simples botao-simples--excluir'
     if(botaoDeletar){
-        const cliente = e.target.closest('[data-id]')
-        const id = cliente.dataset.id
-        serviceCliente.deletaCliente(id)
-        .then(() => {
+        try {
+            const cliente = e.target.closest('[data-id]')
+            const id = cliente.dataset.id
+            await serviceCliente.deletaCliente(id)
             cliente.remove()
-        })
+        } catch (error) {
+            console.log(error)
+            Window.location.href = '../../telas/erro.html'
+        }
+
     }
 })
 
-serviceCliente.listaDeClientes()
-.then( resposta => {
-    resposta.forEach(elemento => {
-        corpoDaTabela.appendChild(adionaClienteNaLista(elemento.nome, elemento.email, elemento.id))
-    })
-})
-
+const renderizando = async () => {
+    
+    try {
+        const cliente = await serviceCliente.listaDeClientes()
+        cliente.forEach(elemento => {
+            corpoDaTabela.appendChild(adionaClienteNaLista(elemento.nome, elemento.email, elemento.id))
+        })
+    } catch (error) {
+        console.log(error)
+        window.location.href = `../../telas/erro.html`
+    }
+}
+renderizando()
