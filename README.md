@@ -65,3 +65,7 @@ Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvend
 
 Acrônimo `CRUD`: Create, update, Read e Delete. 
 "Traduzindo, é listar, criar, editar e excluir."
+
+### Tratamento de erro e funções assíncronas
+ - Refatorando o código com `async` /  `await`, indicando funções assíncronas no sistema.
+ - Tratando erros com `try{}` / `catch(error){}`
