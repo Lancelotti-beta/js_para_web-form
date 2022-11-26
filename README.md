@@ -64,7 +64,7 @@ Projeto da @Alura para aprender a manipular dados em um formulario, desenvolvend
   - Criando um cliente novo, listando clientes na aplicação, editar os dados e excluir quando necessário.
 
 Acrônimo `CRUD`: Create, update, Read e Delete. 
-"Traduzindo, é listar, criar, editar e excluir."
+"Criar, editar, ler e excluir."
 
 ### Tratamento de erro e funções assíncronas
  - Refatorando o código com `async` /  `await`, indicando funções assíncronas no sistema.

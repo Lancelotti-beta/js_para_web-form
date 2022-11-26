@@ -72,7 +72,7 @@ function mostraMensagemDeErro(tipoInput, input) {
     return mensagem;
 }
 
-//Validação da Data de Nascimento 
+//Validações 
 
 const validadores = {
     dataNascimento: input => validacaoDataDoNascimento(input),
