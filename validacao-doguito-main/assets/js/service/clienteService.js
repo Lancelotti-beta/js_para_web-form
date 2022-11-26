@@ -1,5 +1,8 @@
 const listaDeClientes = () => {
-    return fetch('http://localhost:3000/profile')
+    //https://js-para-web-form.vercel.app/telas/
+    //http://localhost:3000/
+
+    return fetch('https://js-para-web-form.vercel.app/profile')
     .then( resposta => {
         if (resposta.ok) {
             return resposta.json()
@@ -9,7 +12,7 @@ const listaDeClientes = () => {
 }
 
 const criarCliente = (nome, email) => {
-    return fetch('http://localhost:3000/profile', {
+    return fetch('https://js-para-web-form.vercel.app/profile', {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/JSON'
@@ -28,7 +31,7 @@ const criarCliente = (nome, email) => {
 }
 
 const deletaCliente = (id) => {
-    return fetch(`http://localhost:3000/profile/${id}`, {
+    return fetch(`https://js-para-web-form.vercel.app/profile/${id}`, {
         method: 'DELETE'
     }).then( resposta => {
         if (!resposta.ok) {
@@ -38,7 +41,7 @@ const deletaCliente = (id) => {
 }
 
 const retornoClienteAlterar = (id) => {
-    return fetch(`http://localhost:3000/profile/${id}`)
+    return fetch(`https://js-para-web-form.vercel.app/profile/${id}`)
     .then( resposta => {
         if (resposta.ok) {
             return resposta.json()
@@ -48,7 +51,7 @@ const retornoClienteAlterar = (id) => {
 }
 
 const infosDoClienteAlterada = (id, nome, email) => {
-    return fetch(`http://localhost:3000/profile/${id}`, {
+    return fetch(`https://js-para-web-form.vercel.app/profile/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type' : 'application/JSON'
