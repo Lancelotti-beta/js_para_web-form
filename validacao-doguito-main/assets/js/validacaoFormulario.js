@@ -137,7 +137,7 @@ function verificaRepeticaoDeCPF(cpf) {
 }
 
 function checaEstruturaDoCPF(cpf) {
-    const multiplicador = 10;
+    let multiplicador = 10;
 
     return checarDigitoVerificador(cpf, multiplicador);
 }
