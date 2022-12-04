@@ -1,9 +1,9 @@
 import { serviceCliente } from "../service/clienteService.js";
 
-(async () =>{
+(async () => {
     const url = new URL(window.location)
     const id = url.searchParams.get('id')
-    
+
     const campoNome = document.querySelector('[data-nome]')
     const campoEmail = document.querySelector('[data-email]')
     try {
@@ -14,7 +14,7 @@ import { serviceCliente } from "../service/clienteService.js";
         console.log(error)
         window.location.href = `../../telas/erro.html`
     }
-    
+
     const formulario = document.querySelector('[data-form]')
     formulario.addEventListener('submit', async e => {
         e.preventDefault()

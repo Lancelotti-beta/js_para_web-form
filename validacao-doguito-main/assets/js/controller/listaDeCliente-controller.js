@@ -1,6 +1,6 @@
 import { serviceCliente } from "../service/clienteService.js"
 
-const adionaClienteNaLista = (nome, email, id) => {
+const adionaClienteNaLista = ({ nome, email, id }) => {
     const elementoTr = document.createElement('tr')
     const elementoCliente = `
         <td class="td" data-td>${nome}</td>
@@ -37,11 +37,11 @@ corpoDaTabela.addEventListener('click' , async e => {
 })
 
 const renderizando = async () => {
-    
+
     try {
         const cliente = await serviceCliente.listaDeClientes()
         cliente.forEach(elemento => {
-            corpoDaTabela.appendChild(adionaClienteNaLista(elemento.nome, elemento.email, elemento.id))
+            corpoDaTabela.appendChild(adionaClienteNaLista(elemento))
         })
     } catch (error) {
         console.log(error)

@@ -26,8 +26,11 @@ module.exports = {
     "watchOptions": {
         "ignoreInitial": true
     },
-    "server": false,
-    "proxy": false,
+    "server": true,
+    "proxy": {
+        "target": "https://js-para-web-form.vercel.app/",
+        "ws": true
+    },
     "port": 3000,
     "middleware": false,
     "serveStatic": [],

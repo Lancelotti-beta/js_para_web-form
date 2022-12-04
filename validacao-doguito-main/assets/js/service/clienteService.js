@@ -1,5 +1,4 @@
 const listaDeClientes = () => {
-    //https://js-para-web-form.vercel.app/telas/
     return fetch('http://localhost:3000/profile')
     .then( resposta => {
         if (resposta.ok) {
