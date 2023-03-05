@@ -1,3 +1,6 @@
+// let currentURL = window.location.href;
+// console.log(currentURL);
+
 const listaDeClientes = () => {
     return fetch('http://localhost:3000/profile')
     .then( resposta => {
